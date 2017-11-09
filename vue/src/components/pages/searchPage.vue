@@ -23,11 +23,6 @@
         },
         data () {
             return {
-                items: [
-                    { icon: 'search', title: 'Pesquisa', value: 'search'},
-                    { icon: 'today', title: 'Agendamento', value: 'scheduling' },
-                    { icon: 'question_answer', title: 'Chat', value: 'chat' }
-                ],
             }
         },
     }

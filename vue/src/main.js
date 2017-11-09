@@ -6,13 +6,21 @@ import {
   VIcon,
   VGrid,
   VList,
+  VMenu,
+  VCard,
+  VAvatar,
   VFooter,
   VToolbar,
   VTextField,
+  VSubheader,
+  VDatePicker,
+  VTimePicker,
+  VRadioGroup,
   VNavigationDrawer,
   transitions
 } from 'vuetify'
-import App from './components/pages/search.vue'
+// import App from './components/pages/searchPage.vue'
+import App from './components/pages/schedulePage.vue'
 
 Vue.use(Vuetify, {
   components: {
@@ -21,9 +29,16 @@ Vue.use(Vuetify, {
     VIcon,
     VGrid,
     VList,
+    VMenu,
+    VCard,
+    VAvatar,
     VFooter,
     VToolbar,
     VTextField,
+    VSubheader,
+    VDatePicker,
+    VTimePicker,
+    VRadioGroup,
     VNavigationDrawer,
     transitions
   }

@@ -1,11 +1,9 @@
 <template>
     <v-app light style="height: 1vh; min-height: 1vh">
         <v-navigation-drawer
-            app
-            persistent
-            v-model="drawer"
-            :mini-variant="hidden"
-            enable-resize-watcher>
+                app
+                persistent
+                enable-resize-watcher>
             <v-toolbar flat class="transparent">
                 <v-list>
                     <v-list-tile avatar @click="goTo = ''">
@@ -20,10 +18,10 @@
             </v-toolbar>
             <v-list>
                 <v-list-tile
-                    value="true"
-                    :key="item.title"
-                    v-for="item in items"
-                    @click="goTo = item.value">
+                        value="true"
+                        :key="item.title"
+                        v-for="item in items"
+                        @click="goTo = item.value">
                     <v-list-tile-action>
                         <v-icon light v-html="item.icon"></v-icon>
                     </v-list-tile-action>
@@ -32,42 +30,24 @@
                     </v-list-tile-content>
                 </v-list-tile>
             </v-list>
-            <v-footer absolute style="background-color: white">
-                <v-btn fab small flat v-show="!hidden" style="margin: 5px auto" @click.native="hidden = !hidden">
-                    <v-icon>keyboard_arrow_left</v-icon>
-                </v-btn>
-                <v-btn fab small flat v-show="hidden" style="margin: 5px auto" @click.native="hidden = !hidden">
-                    <v-icon>keyboard_arrow_right</v-icon>
-                </v-btn>
-            </v-footer>
+            <v-footer absolute style="background-color: white;"></v-footer>
         </v-navigation-drawer>
-        <v-toolbar fixed app>
-            <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        </v-toolbar>
     </v-app>
 </template>
 
 <script>
-
-    import VFooter from "vuetify/src/components/VFooter/VFooter";
-    import VIcon from "vuetify/src/components/VIcon/VIcon";
-
     export default {
-        components: {
-            VIcon,
-            VFooter},
         data () {
             return {
                 name: 'Guilherme',
                 drawer: true,
                 goTo: null,
                 items: [
-                    { icon: 'search', title: 'Pesquisar', value: 'search'},
-                    { icon: 'question_answer', title: 'Chat', value: 'chat' },
-                    { icon: 'store', title: 'Cadastre sua Barbearia', value: 'new' },
-//                    { icon: 'settings', title: 'Configurações', value: 'settings' }
+                    { icon: 'person', title: 'Sua Conta', value: 'account' },
+                    { icon: 'lock', title: 'Senha', value: 'password' },
+                    { icon: 'credit_card', title: 'Crédito', value: 'payment' },
+                    { icon: 'notifications', title: 'Notificações', value: 'notifications' },
                 ],
-                hidden: false
             }
         },
         watch: {
@@ -88,5 +68,5 @@
 </script>
 
 <style lang="stylus">
-    /*@import '../../stylus/components/pages/main.styl'*/
+    @import '../stylus/main.styl'
 </style>
