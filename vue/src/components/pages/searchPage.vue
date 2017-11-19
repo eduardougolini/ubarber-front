@@ -34,7 +34,7 @@
         },
         methods: {
             searchFor: function() {
-                this.$http.get('/barber/get').then( response => {
+                this.$http.get(`app_dev.php/barber/get/${this.search}`).then( response => {
                     console.log(response);
                 }, response => {
                     console.log(response);
