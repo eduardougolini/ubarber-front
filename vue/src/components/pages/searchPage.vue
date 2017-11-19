@@ -34,7 +34,11 @@
         },
         methods: {
             searchFor: function() {
-                
+                this.$http.get('/barber/get').then( response => {
+                    console.log(response);
+                }, response => {
+                    console.log(response);
+                });
             }
         }
     }

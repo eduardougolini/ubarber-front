@@ -22,6 +22,8 @@ import {
 } from 'vuetify'
 import router from './routes'
 import App from './components/navigationDrawer.vue'
+import VueResource from 'vue-resource'
+Vue.use(VueResource);
 
 Vue.use(Vuetify, {
   components: {

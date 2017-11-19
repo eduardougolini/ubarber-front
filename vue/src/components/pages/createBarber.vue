@@ -98,7 +98,7 @@
                         dark
                         large
                         color="blue"
-                        class="save">Salvar</v-btn>
+                        class="save"  @click.native="postToCreate()">Salvar</v-btn>
                 </v-flex>
             </v-layout>
         </v-container>
@@ -128,6 +128,29 @@
                     'Pará', 'Paraíba', 'Paraná', 'Pernambuco', 'Piauí', 'Rio de Janeiro', 'Rio Grande do Norte',
                     'Rio Grande do Sul', 'Rondônia', 'Roraima', 'Santa Catarina', 'São Paulo', 'Sergipe', 'Tocantins'
                 ]
+            }
+        },
+        methods: { 
+            postToCreate: function() {
+                this.ajaxRequest = true;
+                
+                var payload = {
+                    name: "teste",
+                    city: this.city,
+                    state: this.state,
+                    zip: this.zipCode,
+                    street: this.street,
+                    district: this.district,
+                    number: this.number,
+                    complement: this.complement,
+                    cnpj: this.CNPJ
+                }
+
+                this.$http.post('app_dev.php/barber/new', payload, function (data, status, request) {
+                        this.postResults = data;
+                        this.ajaxRequest = false;
+                    }
+                );
             }
         }
     }
