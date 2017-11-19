@@ -9,6 +9,26 @@
                 </v-text-field>
             </v-flex>
         </v-container>
+        <v-list>
+            <v-list-tile
+                value="true"
+                :key="item.id"
+                v-for="item in barbers">
+                <v-card>
+                    <v-card-media
+                        class="white--text"
+                        src="uBarber-frontend/vue/images/barber.jpg">
+                        <v-container fill-height fluid>
+                            <v-layout fill-height>
+                                <v-flex xs12 align-end flexbox class="text-sm-center">
+                                    <router-link :to="item.name">{{item.name}}</router-link>
+                                </v-flex>
+                            </v-layout>
+                        </v-container>
+                    </v-card-media>
+                </v-card>
+            </v-list-tile>
+        </v-list>
     </v-content>
 </template>
 
@@ -22,7 +42,8 @@
         },
         data () {
             return {
-                search: null
+                search: null,
+                barbers: []
             }
         },
         watch: {
@@ -34,10 +55,10 @@
         },
         methods: {
             searchFor: function() {
-                this.$http.get(`app_dev.php/barber/get/${this.search}`).then( response => {
-                    console.log(response);
-                }, response => {
-                    console.log(response);
+                this.$http.get(`app_dev.php/barber/get/${this.search}`).then(response => {
+                    this.barbers = response.data;
+                }, error => {
+                    console.log(error);
                 });
             }
         }
@@ -46,4 +67,13 @@
 
 <style lang="stylus">
     @import "../../stylus/main.styl"
+
+    .card
+      width 400px
+      margin auto
+
+    a
+      text-transform capitalize
+      color white !important
+      text-decoration none
 </style>
