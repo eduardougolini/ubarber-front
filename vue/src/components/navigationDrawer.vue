@@ -2,13 +2,14 @@
     <v-app light style="height: 1vh; min-height: 1vh">
         <v-navigation-drawer
             app
+            dense="true"
             persistent
             v-model="drawer"
-            :mini-variant="hidden"
-            enable-resize-watcher>
+            enable-resize-watcher
+            :mini-variant="hidden">
             <v-toolbar flat class="transparent">
                 <v-list>
-                    <v-list-tile avatar @click="goTo = ''">
+                    <v-list-tile avatar>
                         <v-list-tile-avatar>
                             <img src="images/icon.png" alt="">
                         </v-list-tile-avatar>
@@ -20,15 +21,16 @@
             </v-toolbar>
             <v-list>
                 <v-list-tile
+                    router
                     value="true"
+                    :to="item.link"
                     :key="item.title"
-                    v-for="item in items"
-                    @click="goTo = item.value">
+                    v-for="item in items">
                     <v-list-tile-action>
-                        <v-icon light v-html="item.icon"></v-icon>
+                        <v-icon>{{ item.icon }}</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                        <v-list-tile-title v-text="item.title"></v-list-tile-title>
+                        <v-list-tile-title>{{ item.title }}</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
             </v-list>
@@ -44,49 +46,31 @@
         <v-toolbar fixed app>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         </v-toolbar>
+        <main>
+            <router-view></router-view>
+        </main>
     </v-app>
 </template>
 
 <script>
-
-    import VFooter from "vuetify/src/components/VFooter/VFooter";
-    import VIcon from "vuetify/src/components/VIcon/VIcon";
-
     export default {
-        components: {
-            VIcon,
-            VFooter},
         data () {
             return {
                 name: 'Guilherme',
                 drawer: true,
                 goTo: null,
                 items: [
-                    { icon: 'search', title: 'Pesquisar', value: 'search'},
-                    { icon: 'question_answer', title: 'Chat', value: 'chat' },
-                    { icon: 'store', title: 'Cadastre sua Barbearia', value: 'new' },
+                    { icon: 'search', title: 'Pesquisar', link: '/search'},
+                    { icon: 'event', title: 'Seus Agendamentos', link: '/kkkk' },
+                    { icon: 'store', title: 'Cadastre sua Barbearia', link: '/new' },
 //                    { icon: 'settings', title: 'Configurações', value: 'settings' }
                 ],
                 hidden: false
             }
         },
-        watch: {
-            goTo: function () {
-                this.changeRoute(this.goTo);
-            }
-        },
-        methods: {
-            changeRoute: function (route) {
-                let appDevLink = (window.location.href.indexOf("dev.php") === -1) ? "/" : "/app_dev.php/";
-
-                console.log(appDevLink + route)
-
-                this.$http.get(appDevLink + route);
-            }
-        }
     }
 </script>
 
 <style lang="stylus">
-    /*@import '../../stylus/components/pages/main.styl'*/
+    @import '../stylus/main.styl'
 </style>

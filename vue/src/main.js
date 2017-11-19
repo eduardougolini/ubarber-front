@@ -10,6 +10,7 @@ import {
   VCard,
   VAvatar,
   VFooter,
+  VSelect,
   VToolbar,
   VTextField,
   VSubheader,
@@ -19,8 +20,8 @@ import {
   VNavigationDrawer,
   transitions
 } from 'vuetify'
-// import App from './components/pages/searchPage.vue'
-import App from './components/pages/schedulePage.vue'
+import router from './routes'
+import App from './components/navigationDrawer.vue'
 
 Vue.use(Vuetify, {
   components: {
@@ -33,6 +34,7 @@ Vue.use(Vuetify, {
     VCard,
     VAvatar,
     VFooter,
+    VSelect,
     VToolbar,
     VTextField,
     VSubheader,
@@ -42,9 +44,11 @@ Vue.use(Vuetify, {
     VNavigationDrawer,
     transitions
   }
-})
+});
+Vue.config.productionTip = false;
 
 new Vue({
   el: '#app',
+  router,
   render: h => h(App)
 })
