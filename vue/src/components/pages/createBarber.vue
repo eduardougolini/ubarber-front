@@ -133,20 +133,18 @@
         methods: { 
             postToCreate: function() {
                 this.ajaxRequest = true;
+                var formData = new FormData();
+                formData.append('name',this.barberName);
+                formData.append('city', this.city);
+                formData.append('state', this.state);
+                formData.append('zip', this.zipCode);
+                formData.append('street', this.street);
+                formData.append('district', this.district);
+                formData.append('number',this.number);
+                formData.append('complement', this.complement);
+                formData.append('cnpj', this.CNPJ);
                 
-                var payload = {
-                    name: "teste",
-                    city: this.city,
-                    state: this.state,
-                    zip: this.zipCode,
-                    street: this.street,
-                    district: this.district,
-                    number: this.number,
-                    complement: this.complement,
-                    cnpj: this.CNPJ
-                }
-
-                this.$http.post('app_dev.php/barber/new', payload, function (data, status, request) {
+                this.$http.post('app_dev.php/barber/new', formData, function (data, status, request) {
                         this.postResults = data;
                         this.ajaxRequest = false;
                     }
