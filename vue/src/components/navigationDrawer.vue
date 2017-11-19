@@ -11,7 +11,7 @@
                 <v-list>
                     <v-list-tile avatar>
                         <v-list-tile-avatar>
-                            <img src="images/icon.png" alt="">
+                            <img src="uBarber-frontend/vue/images/icon.png" alt="">
                         </v-list-tile-avatar>
                         <v-list-tile-content>
                             <v-list-tile-title v-text="name"></v-list-tile-title>
