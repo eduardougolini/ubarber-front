@@ -38,5 +38,5 @@
 </script>
 
 <style lang="stylus">
-    @import "../../stylus/login.styl"
+    @import "../../stylus/pages/login.styl"
 </style>
