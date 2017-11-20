@@ -65,13 +65,13 @@
         data () {
             //console.log(this.$http.get(`app_dev.php/getUserRoles`).then( response => response.body!=''));
             return {
+                role: undefined,
                 authenticated: false,
                 name: 'Guilherme',
                 drawer: true,
                 goTo: null,
                 items: [
                     { icon: 'search', title: 'Pesquisar', link: '/search'},
-                    { icon: 'login', title: 'Login', link: '/login'},
                     { icon: 'event', title: 'Seus Agendamentos', link: '/kkkk' },
                     { icon: 'store', title: 'Cadastre sua Barbearia', link: '/new' },
 //                    { icon: 'settings', title: 'Configurações', value: 'settings' }
@@ -80,9 +80,10 @@
             }
         },
         beforeMount(){
-            this.$http.get(`app_dev.php/getUserRoles`).then( response => {
+            this.$http.get(`app_dev.php/getUserData`).then( response => {
                 this.authenticated = response.body[0]!=undefined;
-                console.log(response.body[0]);
+                this.name = response.body[0].name;
+                this.role = response.body[0].role;
             })
         }
     }
