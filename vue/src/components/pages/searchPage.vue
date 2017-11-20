@@ -34,12 +34,8 @@
 
 <script>
     import _ from 'lodash';
-    import navigation from '../navigationDrawer.vue'
 
     export default {
-        components: {
-            navigation
-        },
         data () {
             return {
                 search: null,
