@@ -21,8 +21,8 @@ import {
   transitions
 } from 'vuetify'
 import router from './routes'
-// import App from './components/navigationDrawer.vue'
-import App from './components/pages/loginPage.vue'
+import App from './components/navigationDrawer.vue'
+//import App from './components/pages/loginPage.vue'
 import VueResource from 'vue-resource'
 
 Vue.use(VueResource);

@@ -1,3 +1,4 @@
+
 <template>
     <v-app>
         <v-container fluid grid-list-md>
@@ -26,12 +27,13 @@
 
 <script>
     export default {
+        name: 'loginPage',
         methods: {
             checkFacebook: function () {
-                window.location.href = `${window.location.href}app_dev.php/connect/facebook`;
+                window.location.href = `${window.location.href}/connect/facebook`;
             },
             checkGoogle: function () {
-                window.location.href = `${window.location.href}app_dev.php/connect/google`;
+                window.location.href = `${window.location.href}/connect/google`;
             }
         }
     }

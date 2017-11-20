@@ -7,14 +7,13 @@ import Create from '../components/pages/createBarber.vue';
 import Schedule from '../components/pages/schedulePage.vue';
 
 Vue.use(Router);
-
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'Login',
-      component: Login
-    },
+    // {
+    //   path: '/login',
+    //   name: 'Login',
+    //   component: Login
+    // },
     {
       path: '/search',
       name: 'Pesquisa',
