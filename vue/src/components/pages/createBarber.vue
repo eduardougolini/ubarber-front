@@ -155,13 +155,5 @@
 </script>
 
 <style lang="stylus">
-    @import "../../stylus/main.styl"
-
-    .left
-      margin-right 2%
-
-    .save
-      padding 0 15px
-      font-weight 500
-      margin 0
+    @import "../../stylus/pages/createBarber.styl"
 </style>

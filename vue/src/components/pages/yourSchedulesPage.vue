@@ -16,7 +16,10 @@
                                     <div class="headline center">Corte dia {{
                                         new Date(item.date.date).toLocaleDateString("pt-BR")}}</div>
                                     <div class="headline center">as {{
-                                        new Date(item.date.date).toLocaleTimeString("pt-BR")}}</div>
+                                        new Date(item.date.date).toLocaleTimeString("pt-BR")}}</div><br/>
+                                </v-card-title>
+                                <v-card-title primary-title>
+                                    <div class="headline center">Barbearia {{item.name}}</div>
                                 </v-card-title>
                                 <!--<v-card-actions>-->
                                     <!--<div class="center">-->
@@ -44,6 +47,7 @@
             getSchedules: function() {
                 this.$http.get(`app_dev.php/schedulement/get/user/1`).then(response => {
                     this.schedules = response.data;
+                    console.log(response.data);
                 }, error => {
                     console.log(error);
                 });
@@ -56,8 +60,5 @@
 </script>
 
 <style lang="stylus">
-    @import "../../stylus/main.styl"
-
-    .card
-      margin-top 10%
+    @import "../../stylus/pages/yourSchedulesPage.styl"
 </style>
