@@ -47,7 +47,6 @@
             getSchedules: function() {
                 this.$http.get(`app_dev.php/schedulement/get/user`).then(response => {
                     this.schedules = response.data;
-                    console.log(response.data);
                 }, error => {
                     console.log(error);
                 });

@@ -72,9 +72,9 @@
                 goTo: null,
                 items: [
                     { icon: 'search', title: 'Pesquisar', link: '/search'},
-                    { icon: 'event', title: 'Seus Agendamentos', link: '/kkkk' },
+                    { icon: 'event', title: 'Seus Agendamentos', link: '/yourSchedules' },
                     { icon: 'store', title: 'Cadastre sua Barbearia', link: '/new' },
-//                    { icon: 'settings', title: 'Configurações', value: 'settings' }
+                    { icon: 'highlight_off', title: 'Sair', link: '/logout' }
                 ],
                 hidden: false
             }
