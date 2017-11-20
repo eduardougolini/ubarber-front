@@ -14,14 +14,14 @@
                 value="true"
                 :key="item.id"
                 v-for="item in barbers">
-                <v-card>
+                <v-card router :to="item.name">
                     <v-card-media
                         class="white--text"
                         src="uBarber-frontend/vue/images/barber.jpg">
                         <v-container fill-height fluid>
                             <v-layout fill-height>
                                 <v-flex xs12 align-end flexbox class="text-sm-center">
-                                    <router-link :to="item.name">{{item.name}}</router-link>
+                                    <span>{{item.name}}</span>
                                 </v-flex>
                             </v-layout>
                         </v-container>
@@ -68,8 +68,6 @@
       width 400px
       margin auto
 
-    a
+    span
       text-transform capitalize
-      color white !important
-      text-decoration none
 </style>
