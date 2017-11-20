@@ -56,8 +56,5 @@
 </script>
 
 <style lang="stylus">
-    @import "../../stylus/main.styl"
-
-    .card
-      margin-top 10%
+    @import "../../stylus/pages/yourSchedulesPage.styl"
 </style>

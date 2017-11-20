@@ -62,12 +62,5 @@
 </script>
 
 <style lang="stylus">
-    @import "../../stylus/main.styl"
-
-    .card
-      width 400px
-      margin auto
-
-    span
-      text-transform capitalize
+    @import "../../stylus/pages/searchPage.styl"
 </style>
