@@ -14,7 +14,7 @@
                 value="true"
                 :key="item.id"
                 v-for="item in barbers">
-                <v-card router :to="item.id.toString()">
+                <v-card router :to="`barber/${item.id}`">
                     <v-card-media
                         class="white--text"
                         src="uBarber-frontend/vue/images/barber.jpg">
