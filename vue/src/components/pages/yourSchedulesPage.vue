@@ -1,17 +1,15 @@
 <template>
     <v-content>
-        <v-container
-            fluid
-            grid-list-lg
-            style="min-height: 0;">
-            <v-layout row wrap>
-                <v-flex xs5 class="center">
+        <v-container fluid>
+            <v-layout row wrap >
+                <v-flex xs5 style="margin: auto">
                     <v-list>
                         <v-list-tile
+                            style="min-height: 200px; margin: 20px"
                             value="true"
                             :key="item.id"
                             v-for="item in schedules">
-                            <v-card color="blue-grey darken-2" class="white--text">
+                            <v-card color="blue-grey darken-2" class="white--text" style="margin-top: 100px">
                                 <v-card-title primary-title>
                                     <div class="headline center">Corte dia {{
                                         new Date(item.date.date).toLocaleDateString("pt-BR")}}</div>
@@ -25,6 +23,8 @@
                         </v-list-tile>
                     </v-list>
                 </v-flex>
+            </v-layout>
+            <v-layout row wrap>
                 <v-list two-line subheader>
                     <v-subheader>Agendamentos</v-subheader>
                     <v-list-tile v-for="item in schedules" :key="item.id">

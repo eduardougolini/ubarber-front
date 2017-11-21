@@ -60,9 +60,6 @@
                     </v-btn>
                 </v-footer>
             </v-navigation-drawer>
-            <v-toolbar fixed app>
-                <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-            </v-toolbar>
             <main>
                 <router-view></router-view>
             </main>
