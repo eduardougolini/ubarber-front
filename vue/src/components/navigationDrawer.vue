@@ -86,7 +86,7 @@
                 items: [
                     { icon: 'search', title: 'Pesquisar', link: '/search'},
                     { icon: 'event', title: 'Seus Agendamentos', link: '/yourSchedules' },
-                    { icon: 'store', title: 'Cadastre sua Barbearia', link: '/new' }
+                    { icon: 'store', title: 'Sua Barbearia', link: '/new' }
                 ],
                 hidden: false
             }
