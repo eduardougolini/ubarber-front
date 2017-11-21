@@ -43,7 +43,7 @@
                         :to="'/'"
                         :key="'Sair'">
                         <v-list-tile-action>
-                            <v-icon>highlight_off</v-icon>
+                            <v-icon>mdi-logout</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
                             <v-list-tile-title>Sair</v-list-tile-title>
