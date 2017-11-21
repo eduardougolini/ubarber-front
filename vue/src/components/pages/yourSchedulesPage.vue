@@ -1,7 +1,7 @@
 <template>
     <v-content>
         <v-container fluid>
-            <v-layout row wrap >
+            <v-layout row wrap>
                 <v-flex xs5 style="margin: auto">
                     <v-list>
                         <v-list-tile

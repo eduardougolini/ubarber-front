@@ -1,9 +1,9 @@
 <template>
     <v-app>
         <v-container fluid grid-list-md>
-            <v-layout row wrap>
+            <v-layout row wrap class="el100">
                 <v-flex sm4 style="margin: auto">
-                    <v-card>
+                    <v-card flat>
                         <v-card-media
                             src="uBarber-frontend/vue/images/login.jpg"
                             height="200px">
