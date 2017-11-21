@@ -1,8 +1,19 @@
 <template>
-    <v-content>
+    <v-content class="barberPage">
         <v-container fluid>
             <v-list two-line subheader>
-                <v-subheader>Serviços</v-subheader>
+                <v-layout>
+                    <v-flex sm6>
+                        <span>Serviços</span>
+                    </v-flex>
+                    <v-flex sm6>
+                        <v-btn
+                            dark
+                            router
+                            :to="`../schedule`"
+                            color="light-blue lighten-2">Agendamento</v-btn>
+                    </v-flex>
+                </v-layout>
                 <v-list-tile v-for="item in services" :key="item.id">
                     <v-list-tile-content>
                         <v-list-tile-title>{{ item.title }}</v-list-tile-title>
@@ -39,8 +50,5 @@
 </script>
 
 <style lang="stylus">
-    @import "../../stylus/main.styl"
-
-    span
-        float right
+    @import "../../stylus/pages/barberPage.styl"
 </style>
