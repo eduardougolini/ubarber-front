@@ -2,14 +2,14 @@
     <v-app>
         <v-container fluid grid-list-md>
             <v-layout row wrap>
-                <v-flex sm4>
+                <v-flex sm4 style="margin: auto">
                     <v-card>
                         <v-card-media
                             src="uBarber-frontend/vue/images/login.jpg"
                             height="200px">
                         </v-card-media>
                         <v-card-title primary-title>
-                            <div>
+                            <div style="margin: auto">
                                 <div class="headline">Bem-vindo ao uBarber</div>
                             </div>
                         </v-card-title>
