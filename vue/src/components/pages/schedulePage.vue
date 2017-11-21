@@ -88,9 +88,6 @@
                         <v-list-tile-sub-title>{{ item.name }}</v-list-tile-sub-title>
                     </v-list-tile-content>
                     <v-list-tile-action>
-                        <v-btn icon ripple @click.native="reschudleService(item.id)">
-                            <v-icon color="grey lighten-1">access_time</v-icon>
-                        </v-btn>
                         <v-btn icon ripple @click.native="deleteSchedule(item.id)">
                             <v-icon color="grey lighten-1">delete</v-icon>
                         </v-btn>
@@ -107,6 +104,7 @@
             var schedules;
             this.$http.get(`../app_dev.php/schedulement/get/barber/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}`).then(response => {
                 this.schedules = response.data;
+                console.log(this.schedules);
             }, error => {
                 console.log(error);
             });
@@ -131,17 +129,32 @@
         },
         methods: {
             scheduleBarber: function () {
+                this.ajaxRequest = true;
                 this.$http.post(`../app_dev.php/schedulement/new/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}/${new Date(`${this.scheduleDate} ${this.scheduleHour}`).getTime()/1000}`, undefined, function (data, status, request) {
                         this.postResults = data;
                         this.ajaxRequest = false;
                     }
-                );
+                ).then(response => {
+                    if(response.status == 200){
+                        this.$http.get(`../app_dev.php/schedulement/get/barber/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}`).then(response => {
+                            this.schedules = response.data;
+                        }, error => {
+                            console.log(error);
+                        });
+                    }
+                });
             },
-            reschudleService: function () {
-                
-            },
-            deleteSchedule: function () {
-                
+            deleteSchedule: function (id) {
+                this.ajaxRequest = true;
+                this.$http.post(`../app_dev.php/schedulement/update/${id}/0`, undefined, (data, status, request) => {
+                        this.postResults = data;
+                        this.ajaxRequest = false;
+                    }
+                ).then(response => {
+                    if(response.status == 200){
+                        this.schedules.splice(this.schedules.findIndex(item => item.id == id), 1);
+                    }
+                });
             }
         }
     }
