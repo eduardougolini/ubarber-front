@@ -110,7 +110,6 @@
                     </v-flex>
                     <v-flex xs12 sm5 class="left">
                         <v-text-field
-                            required
                             v-model="barberName"
                             color="grey darken-2"
                             label="Nome da Barbearia">
@@ -120,7 +119,6 @@
                 <v-layout row wrap>
                     <v-flex xs12 sm5>
                         <v-text-field
-                            required
                             label="CNPJ"
                             v-model="CNPJ"
                             color="grey darken-2">
@@ -130,7 +128,6 @@
                 <v-layout row wrap>
                     <v-flex xs12 sm3 class="left">
                         <v-text-field
-                            required
                             label="CEP"
                             v-model="zipCode"
                             color="grey darken-2">
@@ -140,7 +137,6 @@
                 <v-layout row wrap>
                     <v-flex xs12 sm3 class="left">
                         <v-text-field
-                            required
                             label="Rua"
                             v-model="street"
                             color="grey darken-2">
@@ -148,7 +144,6 @@
                     </v-flex>
                     <v-flex xs12 sm1>
                         <v-text-field
-                            required
                             label="Número"
                             v-model="number"
                             color="grey darken-2">
@@ -167,7 +162,6 @@
                 <v-layout row wrap>
                     <v-flex xs12 sm2 class="left">
                         <v-text-field
-                            required
                             v-model="district"
                             label="Bairro"
                             color="grey darken-2">
@@ -175,7 +169,6 @@
                     </v-flex>
                     <v-flex xs12 sm2 class="left">
                         <v-text-field
-                            required
                             v-model="city"
                             label="Cidade"
                             color="grey darken-2">
