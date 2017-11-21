@@ -27,10 +27,8 @@
             </v-list>
         </v-container>
         <v-divider></v-divider>
+        <v-subheader>Cadastro de Serviços</v-subheader>
         <v-layout>
-            <v-flex sm12>
-                <v-subheader>Cadastro de Serviços</v-subheader>
-            </v-flex>
             <v-flex sm6>
                 <v-text-field
                     v-model="search"
