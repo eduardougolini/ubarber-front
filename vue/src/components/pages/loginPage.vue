@@ -1,4 +1,3 @@
-
 <template>
     <v-app>
         <v-container fluid grid-list-md>

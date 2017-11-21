@@ -1,4 +1,3 @@
-
 <template>
     <v-app light style="height: 1vh; min-height: 1vh" >
         <div v-if="authenticated">
@@ -58,12 +57,12 @@
 
 <script>
     import loginPage from './pages/loginPage.vue';
+
     export default {
         components: {
             loginPage
         },
         data () {
-            //console.log(this.$http.get(`app_dev.php/getUserRoles`).then( response => response.body!=''));
             return {
                 role: undefined,
                 authenticated: false,

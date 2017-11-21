@@ -21,12 +21,6 @@
                                 <v-card-title primary-title>
                                     <div class="headline center">Barbearia {{item.name}}</div>
                                 </v-card-title>
-                                <!--<v-card-actions>-->
-                                    <!--<div class="center">-->
-                                        <!--<v-btn flat dark>Remarcar</v-btn>-->
-                                        <!--<v-btn flat dark>Cancelar</v-btn>-->
-                                    <!--</div>-->
-                                <!--</v-card-actions>-->
                             </v-card>
                         </v-list-tile>
                     </v-list>
@@ -43,17 +37,12 @@
                 schedules: []
             }
         },
-        methods: {
-            getSchedules: function() {
-                this.$http.get(`app_dev.php/schedulement/get/user`).then(response => {
-                    this.schedules = response.data;
-                }, error => {
-                    console.log(error);
-                });
-            }
-        },
         mounted() {
-            this.getSchedules();
+            this.$http.get(`app_dev.php/schedulement/get/user`).then(response => {
+                this.schedules = response.data;
+            }, error => {
+                console.log(error);
+            });
         }
     }
 </script>
