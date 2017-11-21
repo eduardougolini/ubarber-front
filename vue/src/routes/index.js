@@ -25,7 +25,7 @@ export default new Router({
       component: Create
     },
     {
-      path: '/schedule',
+      path: '/schedule/:id',
       name: 'Agendamento',
       component: Schedule
     },

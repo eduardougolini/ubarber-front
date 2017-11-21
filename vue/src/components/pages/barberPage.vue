@@ -10,7 +10,7 @@
                         <v-btn
                             dark
                             router
-                            :to="`../schedule`"
+                            :to="`../schedule/`+idBarber"
                             color="light-blue lighten-2">Agendamento</v-btn>
                     </v-flex>
                 </v-layout>
@@ -39,7 +39,8 @@
                 console.log(error);
             });
             return {
-                services: this.services
+                services: this.services,
+                idBarber: window.location.href.substr(window.location.href.lastIndexOf("/") + 1)
             }
         },
         methods: {

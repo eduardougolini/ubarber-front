@@ -38,9 +38,6 @@
                         </v-date-picker>
                     </v-menu>
                 </v-flex>
-                <v-flex sm1 class="until">
-                    <p v-show="hidden">até</p>
-                </v-flex>
                 <v-flex xs12 sm3>
                     <v-menu
                         lazy
@@ -76,7 +73,7 @@
                         </v-time-picker>
                     </v-menu>
                 </v-flex>
-                <v-flex sm5 dark color="light-blue lighten-2" class="sendSchedule" @click="scheduleBarber">
+                <v-flex sm5 dark color="light-blue lighten-2" class="sendSchedule" @click="scheduleBarber()">
                     <v-btn v-show="hiddenMax">agendar</v-btn>
                 </v-flex>
             </v-layout>
@@ -106,7 +103,11 @@
         },
         methods: {
             scheduleBarber: function () {
-                
+                this.$http.post(`../app_dev.php/schedulement/new/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}/${new Date(`${this.scheduleDate} ${this.scheduleHour}`).getTime()/1000}`, undefined, function (data, status, request) {
+                        this.postResults = data;
+                        this.ajaxRequest = false;
+                    }
+                );
             }    
         }
     }
