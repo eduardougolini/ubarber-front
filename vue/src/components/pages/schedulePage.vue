@@ -39,7 +39,7 @@
                     </v-menu>
                 </v-flex>
                 <v-flex sm1 class="until">
-                    <p v-show="hidden">até</p>
+                    <p v-show="hidden">às</p>
                 </v-flex>
                 <v-flex xs12 sm3>
                     <v-menu
@@ -80,6 +80,24 @@
                     <v-btn v-show="hiddenMax">agendar</v-btn>
                 </v-flex>
             </v-layout>
+            <v-divider></v-divider>
+            <v-list two-line subheader>
+                <v-subheader>Agendamentos</v-subheader>
+                <v-list-tile v-for="item in schedules" :key="item.id">
+                    <v-list-tile-content>
+                        <v-list-tile-title>{{ item.date }}</v-list-tile-title>
+                        <v-list-tile-sub-title>{{ item.name }}</v-list-tile-sub-title>
+                    </v-list-tile-content>
+                    <v-list-tile-action>
+                        <v-btn icon ripple @click.native="reschudleService(item.id)">
+                            <v-icon color="grey lighten-1">access_time</v-icon>
+                        </v-btn>
+                        <v-btn icon ripple @click.native="deleteService(item.id)">
+                            <v-icon color="grey lighten-1">delete</v-icon>
+                        </v-btn>
+                    </v-list-tile-action>
+                </v-list-tile>
+            </v-list>
         </v-container>
     </v-content>
 </template>
@@ -93,7 +111,9 @@
 
                 scheduleDate: new Date(),
                 scheduleDateFormatted: null,
-                scheduleHour: null
+                scheduleHour: null,
+
+                schedules: []
             }
         },
         watch: {
@@ -107,7 +127,13 @@
         methods: {
             scheduleBarber: function () {
                 
-            }    
+            },
+            reschudleService: function () {
+                
+            },
+            deleteService: function () {
+                
+            }
         }
     }
 </script>
