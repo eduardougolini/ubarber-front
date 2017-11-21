@@ -91,7 +91,7 @@
                         <v-btn icon ripple @click.native="reschudleService(item.id)">
                             <v-icon color="grey lighten-1">access_time</v-icon>
                         </v-btn>
-                        <v-btn icon ripple @click.native="deleteService(item.id)">
+                        <v-btn icon ripple @click.native="deleteSchedule(item.id)">
                             <v-icon color="grey lighten-1">delete</v-icon>
                         </v-btn>
                     </v-list-tile-action>
@@ -104,6 +104,12 @@
 <script>
     export default {
         data () {
+            var schedules;
+            this.$http.get(`../app_dev.php/schedulement/get/barber/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}`).then(response => {
+                this.schedules = response.data;
+            }, error => {
+                console.log(error);
+            });
             return {
                 hidden: false,
                 hiddenMax: false,
@@ -112,7 +118,7 @@
                 scheduleDateFormatted: null,
                 scheduleHour: null,
 
-                schedules: []
+                schedules: this.schedules
             }
         },
         watch: {
@@ -134,7 +140,7 @@
             reschudleService: function () {
                 
             },
-            deleteService: function () {
+            deleteSchedule: function () {
                 
             }
         }
