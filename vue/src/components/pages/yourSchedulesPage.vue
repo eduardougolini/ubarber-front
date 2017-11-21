@@ -29,7 +29,8 @@
                     <v-subheader>Agendamentos</v-subheader>
                     <v-list-tile v-for="item in schedules" :key="item.id">
                         <v-list-tile-content>
-                            <v-list-tile-title>{{ item.date }}</v-list-tile-title>
+                            <v-list-tile-title>{{`${new Date(item.date.date).toLocaleDateString("pt-BR")} ` +
+                                `${new Date(item.date.date).toLocaleTimeString("pt-BR")}`}}</v-list-tile-title>
                             <v-list-tile-sub-title>{{ item.name }}</v-list-tile-sub-title>
                         </v-list-tile-content>
                         <v-list-tile-action>
