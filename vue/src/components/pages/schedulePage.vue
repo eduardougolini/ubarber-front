@@ -131,7 +131,7 @@
         },
         methods: {
             scheduleBarber: function () {
-                this.$http.post(`../app_dev.php/schedulement/new/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}/${new Date(`${this.scheduleDate} ${this.scheduleHour}`).getTime()/1000}`, undefined, function (data, status, request) {
+                this.$http.post(`../app_dev.php/schedulement/new/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}/${new Date(`${this.scheduleDate} ${this.scheduleHour} GMT+0100"`).getTime()/1000}`, undefined, function (data, status, request) {
                         this.postResults = data;
                         this.ajaxRequest = false;
                     }
