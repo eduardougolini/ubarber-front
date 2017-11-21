@@ -25,7 +25,6 @@
                             locale="pt-br"
                             color="blue darken-3"
                             v-model="scheduleDate"
-                            :allowed-dates="allowedDates"
                             :formatted-value.sync="scheduleDateFormatted"
                             :date-format="date => new Date(date).toLocaleDateString('pt-BR')">
                             <template slot-scope="{ save, cancel }">
@@ -64,8 +63,7 @@
                             format="24hr"
                             color="blue darken-3"
                             header-color="blue darken-3"
-                            v-model="scheduleHour"
-                            :allowed-dates="allowedHours">
+                            v-model="scheduleHour">
                             <template slot-scope="{ save, cancel }">
                                 <v-card-actions style="margin: auto">
                                     <v-spacer></v-spacer>
@@ -76,8 +74,8 @@
                         </v-time-picker>
                     </v-menu>
                 </v-flex>
-                <v-flex sm5 dark color="light-blue lighten-2" class="sendSchedule" @click="scheduleBarber">
-                    <v-btn v-show="hiddenMax">agendar</v-btn>
+                <v-flex sm5 class="sendSchedule" @click="scheduleBarber">
+                    <v-btn dark color="light-blue lighten-2" v-show="hiddenMax">agendar</v-btn>
                 </v-flex>
             </v-layout>
             <v-divider></v-divider>

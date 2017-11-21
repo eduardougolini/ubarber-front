@@ -26,6 +26,21 @@
                 </v-list-tile>
             </v-list>
         </v-container>
+        <v-divider></v-divider>
+        <v-layout>
+            <v-subheader>Cadastro de Serviços</v-subheader>
+            <v-flex sm6>
+                <v-text-field
+                    v-model="search"
+                    label="Nome do Serviço"></v-text-field>
+            </v-flex>
+            <v-flex sm6>
+                <v-btn
+                    dark
+                    color="light-blue lighten-2"
+                    @click.native="createService()">Cadastrar</v-btn>
+            </v-flex>
+        </v-layout>
     </v-content>
 </template>
 
@@ -58,6 +73,11 @@
                         this.services.splice(this.services.findIndex(item => item.id == id), 1);
                     }
                 });
+            },
+            createService: function() {
+                this.ajaxRequest = true;
+                var formData = new FormData();
+                formData.append(this.search);
             }
         }
     }

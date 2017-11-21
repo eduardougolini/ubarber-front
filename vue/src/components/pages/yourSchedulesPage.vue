@@ -25,6 +25,20 @@
                         </v-list-tile>
                     </v-list>
                 </v-flex>
+                <v-list two-line subheader>
+                    <v-subheader>Agendamentos</v-subheader>
+                    <v-list-tile v-for="item in schedules" :key="item.id">
+                        <v-list-tile-content>
+                            <v-list-tile-title>{{ item.date }}</v-list-tile-title>
+                            <v-list-tile-sub-title>{{ item.name }}</v-list-tile-sub-title>
+                        </v-list-tile-content>
+                        <v-list-tile-action>
+                            <v-btn icon ripple @click.native="deleteService(item.id)">
+                                <v-icon color="grey lighten-1">delete</v-icon>
+                            </v-btn>
+                        </v-list-tile-action>
+                    </v-list-tile>
+                </v-list>
             </v-layout>
         </v-container>
     </v-content>
