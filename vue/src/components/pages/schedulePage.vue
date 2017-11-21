@@ -79,7 +79,7 @@
                 </v-flex>
             </v-layout>
             <v-divider></v-divider>
-            <v-list two-line subheader>
+            <v-list two-line subheader v-if="this.role=='MANAGER' || this.role=='ADMIN'">
                 <v-subheader>Agendamentos</v-subheader>
                 <v-list-tile v-for="item in schedules" :key="item.id">
                     <v-list-tile-content>
@@ -101,7 +101,14 @@
 <script>
     export default {
         data () {
+            var role;
             var schedules;
+
+             this.$http.get(`../app_dev.php/getUserRole/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}`).then( response => {
+                this.role = response.body[0].role;
+            })
+
+
             this.$http.get(`../app_dev.php/schedulement/get/barber/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}`).then(response => {
                 this.schedules = response.data;
                 console.log(this.schedules);

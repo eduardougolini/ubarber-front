@@ -11,7 +11,7 @@
                             <v-list-tile-sub-title>{{ item.name }}</v-list-tile-sub-title>
                         </v-list-tile-content>
                         <v-list-tile-action>
-                            <v-btn icon ripple @click.native="deleteService(item.id)">
+                            <v-btn icon ripple @click.native="deleteSchedule(item.id)">
                                 <v-icon color="grey lighten-1">delete</v-icon>
                             </v-btn>
                         </v-list-tile-action>
@@ -25,16 +25,29 @@
 <script>
     export default {
         data () {
-            return {
-                schedules: []
-            }
-        },
-        mounted() {
+            var schedules;
             this.$http.get(`app_dev.php/schedulement/get/user`).then(response => {
                 this.schedules = response.data;
             }, error => {
                 console.log(error);
             });
+            return {
+                schedules: this.schedules
+            }
+        },
+        methods: {
+            deleteSchedule: function (id) {
+                this.ajaxRequest = true;
+                this.$http.post(`../app_dev.php/schedulement/update/${id}/0`, undefined, (data, status, request) => {
+                        this.postResults = data;
+                        this.ajaxRequest = false;
+                    }
+                ).then(response => {
+                    if(response.status == 200){
+                        this.schedules.splice(this.schedules.findIndex(item => item.id == id), 1);
+                    }
+                });
+            }
         }
     }
 </script>

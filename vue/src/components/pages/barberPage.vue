@@ -26,34 +26,61 @@
                 </v-list-tile>
             </v-list>
         </v-container>
+        <div v-if="this.role=='MANAGER' || this.role=='ADMIN'">
+            <v-divider></v-divider>
+            <v-subheader>Cadastro de Serviços</v-subheader>
+            <v-layout>
+                <v-flex sm6>
+                    <v-text-field
+                        v-model="serviceName"
+                        label="Nome do Serviço"></v-text-field>
+                </v-flex>
+                <v-flex sm6>
+                    <v-btn
+                        dark
+                        color="light-blue lighten-2"
+                        @click.native="createService()">Cadastrar</v-btn>
+                </v-flex>
+            </v-layout>
+        </div>
         <v-divider></v-divider>
-        <v-subheader>Cadastro de Serviços</v-subheader>
-        <v-layout>
-            <v-flex sm6>
-                <v-text-field
-                    v-model="search"
-                    label="Nome do Serviço"></v-text-field>
-            </v-flex>
-            <v-flex sm6>
-                <v-btn
-                    dark
-                    color="light-blue lighten-2"
-                    @click.native="createService()">Cadastrar</v-btn>
-            </v-flex>
-        </v-layout>
+        <br/>
+        <div class="flex sm6" style="margin:20px">
+            <p>{{`Nome: ${about.name}`}}</p>
+            <p>{{`CEP: ${about.zip}`}}</p>
+            <p>{{`Estado: ${about.state}`}}</p>
+            <p>{{`Cidade: ${about.city}`}}</p>
+            <p>{{`Bairro: ${about.district}`}}</p>
+            <p>{{ `Rua: ${about.street}`}}</p>
+            <p>{{ `Número: ${about.number}`}}</p>
+            <p>{{`Complemento: ${about.complement}`}}</p>
+        </div>
+        
     </v-content>
 </template>
 
 <script>
     export default {
         data() {
+            var about;
+            var role;
             var services;
+
+            this.$http.get(`../app_dev.php/barber/about/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}`).then( response => {
+                this.about = response.body[0];
+            })
+
+            this.$http.get(`../app_dev.php/getUserRole/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}`).then( response => {
+                this.role = response.body[0].role;
+            })
+
             this.$http.get(`../app_dev.php/barber/services/get/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}`).then(response => {
                 this.services = response.data;
             }, error => {
                 console.log(error);
             });
             return {
+                about : this.about,
                 services: this.services,
                 idBarber: window.location.href.substr(window.location.href.lastIndexOf("/") + 1)
             }
@@ -76,9 +103,24 @@
                 });
             },
             createService: function() {
+                // /barber/services/add/{barber}
                 this.ajaxRequest = true;
                 var formData = new FormData();
-                formData.append(this.search);
+                formData.append('serviceName',this.serviceName);
+                
+                this.$http.post(`../app_dev.php/barber/services/add/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}`, formData, function (data, status, request) {
+                        this.postResults = data;
+                        this.ajaxRequest = false;
+                    }
+                ).then(response => {
+                    if(response.status == 200){
+                        this.$http.get(`../app_dev.php/barber/services/get/${window.location.href.substr(window.location.href.lastIndexOf("/") + 1)}`).then(response => {
+                            this.services = response.data;
+                        }, error => {
+                            console.log(error);
+                        });
+                    }
+                });
             }
         }
     }
