@@ -12,7 +12,7 @@
                     <v-list>
                         <v-list-tile avatar>
                             <v-list-tile-avatar>
-                                <img src="uBarber-frontend/vue/images/icon.png" alt="">
+                                <img v-bind:src="userImage">
                             </v-list-tile-avatar>
                             <v-list-tile-content>
                                 <v-list-tile-title v-text="name"></v-list-tile-title>
@@ -83,6 +83,7 @@
                 role: undefined,
                 authenticated: false,
                 name: 'Guilherme',
+                userImage: undefined,
                 drawer: true,
                 goTo: null,
                 items: [
@@ -98,6 +99,7 @@
                 this.authenticated = response.body[0]!=undefined;
                 this.name = response.body[0].name;
                 this.role = response.body[0].role;
+                this.userImage = response.body[0].userImage;
             })
         },
          methods: {
