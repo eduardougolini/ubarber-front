@@ -29,10 +29,10 @@
         name: 'loginPage',
         methods: {
             checkFacebook: function () {
-                window.location.href = `${window.location.href}/connect/facebook`;
+                window.location.href = `${window.location.href}connect/facebook`;
             },
             checkGoogle: function () {
-                window.location.href = `${window.location.href}/connect/google`;
+                window.location.href = `${window.location.href}connect/google`;
             }
         }
     }
