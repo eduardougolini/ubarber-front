@@ -1,34 +1,38 @@
 <template>
-    <v-content>
+    <v-content class="searchPage">
         <v-container fluid>
-            <v-flex sm3 md4 lg6 style="margin: auto">
-                <v-text-field
-                    v-model="search"
-                    prepend-icon="search"
-                    label="Pesquise aqui pela barbearia">
-                </v-text-field>
-            </v-flex>
+            <v-layout row wrap>
+                <v-flex sm3 md4 lg6 style="margin: auto">
+                    <v-text-field
+                        v-model="search"
+                        prepend-icon="search"
+                        label="Pesquise aqui pela barbearia">
+                    </v-text-field>
+                </v-flex>
+            </v-layout>
+            <v-layout class="noPadd">
+                <v-list class="barbersList">
+                    <v-list-tile
+                        value="true"
+                        :key="item.id"
+                        v-for="item in barbers">
+                        <v-card router :to="`barber/${item.id}`">
+                            <v-card-media
+                                class="white--text"
+                                src="uBarber-frontend/vue/images/barber.jpg">
+                                <v-container fill-height fluid>
+                                    <v-layout fill-height>
+                                        <v-flex xs12 align-end flexbox class="text-sm-center">
+                                            <span>{{item.name}}</span>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-container>
+                            </v-card-media>
+                        </v-card>
+                    </v-list-tile>
+                </v-list>
+            </v-layout>
         </v-container>
-        <v-list class="barbersList">
-            <v-list-tile
-                value="true"
-                :key="item.id"
-                v-for="item in barbers">
-                <v-card router :to="`barber/${item.id}`">
-                    <v-card-media
-                        class="white--text"
-                        src="uBarber-frontend/vue/images/barber.jpg">
-                        <v-container fill-height fluid>
-                            <v-layout fill-height>
-                                <v-flex xs12 align-end flexbox class="text-sm-center">
-                                    <span>{{item.name}}</span>
-                                </v-flex>
-                            </v-layout>
-                        </v-container>
-                    </v-card-media>
-                </v-card>
-            </v-list-tile>
-        </v-list>
     </v-content>
 </template>
 
