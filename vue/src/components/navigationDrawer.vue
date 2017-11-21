@@ -34,6 +34,22 @@
                             <v-list-tile-title>{{ item.title }}</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
+
+                    <!-- logunte -->
+                    <v-list-tile 
+                        router
+                        value="true"
+                        @click="logout()"
+                        :to="'/'"
+                        :key="'Sair'">
+                        <v-list-tile-action>
+                            <v-icon>highlight_off</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>Sair</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+
                 </v-list>
                 <v-footer absolute style="background-color: white">
                     <v-btn fab small flat v-show="!hidden" style="margin: 5px auto" @click.native="hidden = !hidden">
@@ -72,8 +88,7 @@
                 items: [
                     { icon: 'search', title: 'Pesquisar', link: '/search'},
                     { icon: 'event', title: 'Seus Agendamentos', link: '/yourSchedules' },
-                    { icon: 'store', title: 'Cadastre sua Barbearia', link: '/new' },
-                    { icon: 'highlight_off', title: 'Sair', link: '/logout' }
+                    { icon: 'store', title: 'Cadastre sua Barbearia', link: '/new' }
                 ],
                 hidden: false
             }
@@ -84,7 +99,12 @@
                 this.name = response.body[0].name;
                 this.role = response.body[0].role;
             })
-        }
+        },
+         methods: {
+             logout: function(){
+                window.location.href = `http://ubarber.com/logout`;
+             }
+         }
     }
 </script>
 
