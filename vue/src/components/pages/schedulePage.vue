@@ -1,19 +1,12 @@
 <template>
-    <v-app light style="height: 1vh">
-        <navigation></navigation>
-        <main>
-            <v-content>
-                <v-flex xs11 sm5>
-                    <v-subheader>Você tem preferência pelo:</v-subheader>
-                    <v-radio-group v-model="preference" hide-details>
-                        <v-radio v-model="day" label="Dia" hide-details></v-radio>
-                        <v-radio v-model="hour" label="Hora" hide-details></v-radio>
-                    </v-radio-group>
+    <v-content class="schedules">
+        <v-container fluid>
+            <v-layout row wrap>
+                <v-flex xs12 sm3>
                     <v-menu
                         lazy
                         offset-y
                         full-width
-                        v-show="!hidden"
                         :nudge-right="40"
                         max-width="290px"
                         min-width="290px"
@@ -24,13 +17,13 @@
                             slot="activator"
                             prepend-icon="event"
                             label="Agendar data para corte"
-                            v-model="scheduleDateFormatted"
-                            style="width: 250px"></v-text-field>
+                            v-model="scheduleDateFormatted"></v-text-field>
                         <v-date-picker
                             actions
                             no-title
                             scrollable
                             locale="pt-br"
+                            color="blue darken-3"
                             v-model="scheduleDate"
                             :allowed-dates="allowedDates"
                             :formatted-value.sync="scheduleDateFormatted"
@@ -44,6 +37,11 @@
                             </template>
                         </v-date-picker>
                     </v-menu>
+                </v-flex>
+                <v-flex sm1 class="until">
+                    <p v-show="hidden">até</p>
+                </v-flex>
+                <v-flex xs12 sm3>
                     <v-menu
                         lazy
                         offset-y
@@ -59,12 +57,13 @@
                             slot="activator"
                             prepend-icon="event"
                             label="Agendar hora para corte"
-                            v-model="scheduleHour"
-                            style="width: 250px"></v-text-field>
+                            v-model="scheduleHour"></v-text-field>
                         <v-time-picker
                             actions
                             scrollable
                             format="24hr"
+                            color="blue darken-3"
+                            header-color="blue darken-3"
                             v-model="scheduleHour"
                             :allowed-dates="allowedHours">
                             <template slot-scope="{ save, cancel }">
@@ -77,42 +76,42 @@
                         </v-time-picker>
                     </v-menu>
                 </v-flex>
-            </v-content>
-        </main>
-    </v-app>
+                <v-flex sm5 dark color="light-blue lighten-2" class="sendSchedule" @click="scheduleBarber">
+                    <v-btn v-show="hiddenMax">agendar</v-btn>
+                </v-flex>
+            </v-layout>
+        </v-container>
+    </v-content>
 </template>
 
 <script>
-    import navigation from '../navigationDrawer.vue';
-
     export default {
-        components: {
-            navigation
-        },
         data () {
             return {
-                preference: true,
-                day: true,
-                hour: false,
-
                 hidden: false,
+                hiddenMax: false,
 
-                scheduleDate: null,
+                scheduleDate: new Date(),
                 scheduleDateFormatted: null,
-                scheduleHour: null,
-
-                allowedDates: null,
-                allowedHours: null
+                scheduleHour: null
             }
         },
         watch: {
-            preference: function () {
-                this.hidden = !this.hidden;
+            scheduleDate: function () {
+                this.hidden = true;
+            },
+            scheduleHour: function () {
+                this.hiddenMax = true;
             }
+        },
+        methods: {
+            scheduleBarber: function () {
+                
+            }    
         }
     }
 </script>
 
 <style lang="stylus">
-    @import "../../stylus/main.styl"
+    @import "../../stylus/pages/schedulePage.styl"
 </style>

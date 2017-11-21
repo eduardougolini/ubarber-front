@@ -1,15 +1,15 @@
 <template>
     <v-content>
         <v-container fluid>
-            <v-flex sm3 md6 lg8 style="margin: auto">
+            <v-flex sm3 md4 lg6 style="margin: auto">
                 <v-text-field
                     v-model="search"
                     prepend-icon="search"
-                    label="Pesquise aqui pela barbearia, pela cidade, ou pelo estado">
+                    label="Pesquise aqui pela barbearia">
                 </v-text-field>
             </v-flex>
         </v-container>
-        <v-list>
+        <v-list class="barbersList">
             <v-list-tile
                 value="true"
                 :key="item.id"
